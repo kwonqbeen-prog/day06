@@ -2,42 +2,166 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==============================================
+   DESIGN TOKENS — 5 Palettes × Light / Dark
+   ============================================== */
+
+/* ── Palette 1: 드림 (Dream Violet) — DEFAULT ── */
+:root {
+  --c-primary:          #D7BFFF;
+  --c-primary-deep:     #B38FFF;
+  --c-secondary:        #FFB8F0;
+  --c-point:            #7C3AED;
+  --c-support:          #FAF5FF;
+  --c-surface:          #FFFFFF;
+  --c-surface-alt:      #F8F3FF;
+  --c-on-surface:       #1A1A2E;
+  --c-on-surface-muted: #7B6FA0;
+  --c-border:           #E5D7FF;
+}
+:root.dark {
+  --c-primary:          #D7BFFF;
+  --c-primary-deep:     #B38FFF;
+  --c-secondary:        #FFB8F0;
+  --c-point:            #9F7AFF;
+  --c-support:          #1E1035;
+  --c-surface:          #160A2E;
+  --c-surface-alt:      #1E1035;
+  --c-on-surface:       #F0E8FF;
+  --c-on-surface-muted: #B0A0CC;
+  --c-border:           #3D1F6B;
+}
+
+/* ── Palette 2: 코튼 (Cotton Sky) ── */
+:root[data-palette="2"] {
+  --c-primary:          #B8DEFF;
+  --c-primary-deep:     #7EC0FF;
+  --c-secondary:        #FFD6E8;
+  --c-point:            #2563EB;
+  --c-support:          #F0F8FF;
+  --c-surface:          #FFFFFF;
+  --c-surface-alt:      #F5F9FF;
+  --c-on-surface:       #0F2A4A;
+  --c-on-surface-muted: #6B8DAA;
+  --c-border:           #C8E6FF;
+}
+:root[data-palette="2"].dark {
+  --c-primary:          #B8DEFF;
+  --c-primary-deep:     #7EC0FF;
+  --c-secondary:        #FFD6E8;
+  --c-point:            #5A9EFF;
+  --c-support:          #0E2035;
+  --c-surface:          #0A1828;
+  --c-surface-alt:      #0E2035;
+  --c-on-surface:       #E0F2FF;
+  --c-on-surface-muted: #90B4CC;
+  --c-border:           #1F3F6B;
+}
+
+/* ── Palette 3: 민트 (Mint Fantasy) ── */
+:root[data-palette="3"] {
+  --c-primary:          #B8FFE4;
+  --c-primary-deep:     #70FFCC;
+  --c-secondary:        #C8B8FF;
+  --c-point:            #059669;
+  --c-support:          #F0FFF8;
+  --c-surface:          #FFFFFF;
+  --c-surface-alt:      #F2FFF8;
+  --c-on-surface:       #0F2E22;
+  --c-on-surface-muted: #5A8A78;
+  --c-border:           #B8FFE4;
+}
+:root[data-palette="3"].dark {
+  --c-primary:          #B8FFE4;
+  --c-primary-deep:     #70FFCC;
+  --c-secondary:        #C8B8FF;
+  --c-point:            #4AE0A0;
+  --c-support:          #0E2A20;
+  --c-surface:          #082018;
+  --c-surface-alt:      #0E2A20;
+  --c-on-surface:       #D0FFE8;
+  --c-on-surface-muted: #80C0A8;
+  --c-border:           #1F6B4A;
+}
+
+/* ── Palette 4: 피치 (Peach Sunrise) ── */
+:root[data-palette="4"] {
+  --c-primary:          #FFD9B8;
+  --c-primary-deep:     #FFBA80;
+  --c-secondary:        #FFB8D9;
+  --c-point:            #EA5820;
+  --c-support:          #FFF8F3;
+  --c-surface:          #FFFFFF;
+  --c-surface-alt:      #FFF5EE;
+  --c-on-surface:       #2E1A0A;
+  --c-on-surface-muted: #A06040;
+  --c-border:           #FFD9B8;
+}
+:root[data-palette="4"].dark {
+  --c-primary:          #FFD9B8;
+  --c-primary-deep:     #FFBA80;
+  --c-secondary:        #FFB8D9;
+  --c-point:            #FF8A5C;
+  --c-support:          #381800;
+  --c-surface:          #281000;
+  --c-surface-alt:      #381800;
+  --c-on-surface:       #FFE8D0;
+  --c-on-surface-muted: #C09070;
+  --c-border:           #6B3A1F;
+}
+
+/* ── Palette 5: 로즈 (Rose Garden) ── */
+:root[data-palette="5"] {
+  --c-primary:          #FFB8C8;
+  --c-primary-deep:     #FF88A8;
+  --c-secondary:        #D7BFFF;
+  --c-point:            #C41C5A;
+  --c-support:          #FFF5F8;
+  --c-surface:          #FFFFFF;
+  --c-surface-alt:      #FFF2F6;
+  --c-on-surface:       #2E0A1A;
+  --c-on-surface-muted: #A05070;
+  --c-border:           #FFD0DE;
+}
+:root[data-palette="5"].dark {
+  --c-primary:          #FFB8C8;
+  --c-primary-deep:     #FF88A8;
+  --c-secondary:        #D7BFFF;
+  --c-point:            #E84080;
+  --c-support:          #380E22;
+  --c-surface:          #280A18;
+  --c-surface-alt:      #380E22;
+  --c-on-surface:       #FFE0EC;
+  --c-on-surface-muted: #C090A8;
+  --c-border:           #6B1F3A;
+}
+
+/* ==============================================
+   BASE + COMPONENTS
+   ============================================== */
 @layer base {
   html {
     scroll-behavior: smooth;
   }
+  * {
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  }
   body {
-    @apply font-sans text-neutral-900 antialiased;
+    @apply font-sans antialiased bg-surface text-on-surface;
   }
 }
 
 @layer components {
-  /* 우측 화살표가 붙은 둥근 버튼 (소스의 btn-arrow 스타일) */
-  .btn-pill {
-    @apply inline-flex items-center gap-3 rounded-full bg-neutral-100 py-4 pl-6 pr-12 font-bold transition hover:bg-neutral-200;
-  }
-  .btn-pill::after {
-    content: '→';
-    @apply absolute right-5 text-neutral-500;
-  }
-
-  /* 섹션 공통 좌우 여백 */
   .section-x {
     @apply px-4 md:px-10 lg:px-24 xl:px-40;
   }
-}
-
-/* 히어로 슬라이더 페이드 */
-@keyframes heroFade {
-  0%,
-  45% {
-    opacity: 1;
+  .btn-point {
+    @apply inline-flex items-center gap-2 rounded-full bg-point px-6 py-3 text-white font-semibold transition-all hover:opacity-85 active:scale-95;
   }
-  50%,
-  95% {
-    opacity: 0;
+  .btn-outline {
+    @apply inline-flex items-center gap-2 rounded-full border border-stroke px-6 py-3 font-semibold text-on-surface transition-all hover:bg-support active:scale-95;
   }
-  100% {
-    opacity: 1;
+  .card {
+    @apply rounded-2xl bg-surface border border-stroke overflow-hidden transition-shadow hover:shadow-lg;
   }
 }

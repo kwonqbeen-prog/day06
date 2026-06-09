@@ -1,21 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        // 브랜드 컬러 (소스의 violet-950 기반)
-        brand: {
-          DEFAULT: '#2e1065',
-          deep: '#1f0a4d',
-        },
-        accent: '#fb923c', // 맨위로 버튼 (orange-400)
+        primary:      'var(--c-primary)',
+        'primary-deep':'var(--c-primary-deep)',
+        secondary:    'var(--c-secondary)',
+        point:        'var(--c-point)',
+        support:      'var(--c-support)',
+        surface:      'var(--c-surface)',
+        'surface-alt':'var(--c-surface-alt)',
+        'on-surface': 'var(--c-on-surface)',
+        muted:        'var(--c-on-surface-muted)',
+        stroke:       'var(--c-border)',
       },
       fontFamily: {
         sans: ['Pretendard', 'system-ui', '-apple-system', 'sans-serif'],
+        logo: ['Fredoka', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
-        container: '1600px',
+        container: '1400px',
       },
     },
   },
