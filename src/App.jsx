@@ -9,6 +9,8 @@ import Videos from './pages/Videos'
 import Artists from './pages/Artists'
 import Challenge from './pages/Challenge'
 import Community from './pages/Community'
+import Members from './pages/Members'
+import MemberPost from './pages/MemberPost'
 import SimplePage from './pages/SimplePage'
 
 export default function App() {
@@ -22,6 +24,9 @@ export default function App() {
           <Route path="/videos" element={<Videos />} />
           <Route path="/videos/:artist" element={<Videos />} />
           <Route path="/artists" element={<Artists />} />
+          <Route path="/members" element={<Members />} />
+          <Route path="/members/post" element={<MemberPost />} />
+          <Route path="/members/:id" element={<Members />} />
           <Route path="/challenge" element={<Challenge />} />
           <Route path="/challenge/results" element={<Challenge tab="results" />} />
           <Route path="/community" element={<Community />} />
