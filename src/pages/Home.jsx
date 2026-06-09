@@ -59,10 +59,10 @@ function Hero() {
         </div>
       ))}
 
-      {/* 오버레이 ① 하단 → 상단 (텍스트 배경 강화) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
-      {/* 오버레이 ② 좌측 → 우측 (텍스트 영역 추가 보호) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
+      {/* 오버레이 ① 하단 → 상단 */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/65 to-black/25" />
+      {/* 오버레이 ② 좌측 → 우측 */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent" />
 
       {/* 히어로 텍스트 — 좌하단 */}
       <div className="absolute inset-0 flex flex-col justify-end">
