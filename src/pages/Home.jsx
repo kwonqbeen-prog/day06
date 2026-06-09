@@ -59,8 +59,14 @@ function Hero() {
         </div>
       ))}
 
-      {/* 전체 헤더 liquid glass — 슬라이드 위에 블러 씌우기 */}
-      <div className="absolute inset-0 backdrop-blur-[7px] bg-black/[0.06]" />
+      {/* 전체 헤더 liquid glass — 왼쪽 강한 블러 → 오른쪽 페이드아웃 */}
+      <div
+        className="absolute inset-0 backdrop-blur-[7px] bg-black/[0.06]"
+        style={{
+          maskImage: 'linear-gradient(to right, black 25%, transparent 72%)',
+          WebkitMaskImage: 'linear-gradient(to right, black 25%, transparent 72%)',
+        }}
+      />
       {/* 오버레이 ① 하단 → 상단 */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
       {/* 오버레이 ② 좌측 → 우측 */}
