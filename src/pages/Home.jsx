@@ -59,8 +59,10 @@ function Hero() {
         </div>
       ))}
 
-      {/* 다크 오버레이 */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10" />
+      {/* 오버레이 ① 하단 → 상단 (텍스트 배경 강화) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
+      {/* 오버레이 ② 좌측 → 우측 (텍스트 영역 추가 보호) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
 
       {/* 히어로 텍스트 — 좌하단 */}
       <div className="absolute inset-0 flex flex-col justify-end">
@@ -70,13 +72,19 @@ function Hero() {
               ✏️ {company.tagline}
             </div>
 
-            <h1 className="text-4xl font-extrabold leading-tight text-white drop-shadow md:text-6xl lg:text-7xl">
+            <h1
+              className="text-4xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl"
+              style={{ textShadow: '0 2px 24px rgba(0,0,0,0.9), 0 0 60px rgba(0,0,0,0.6)' }}
+            >
               그림으로 <br />
               <span style={{ color: 'var(--c-primary)' }}>연결되는</span> <br />
               우리의 이야기
             </h1>
 
-            <p className="max-w-lg text-sm leading-relaxed text-white/80 md:text-base">
+            <p
+              className="max-w-lg text-sm leading-relaxed text-white/90 md:text-base"
+              style={{ textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}
+            >
               예비 일러스트레이터와 인스타툰 작가를 위한 드로잉 학습 커뮤니티.
               <br className="hidden md:block" />
               현직 작가들의 유튜브 영상을 모아보고, 챌린지로 함께 성장해요.
