@@ -280,8 +280,8 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <ActiveMembers />
       <LatestVideos />
+      <ActiveMembers />
       <ChallengeBanner />
       <FeaturedChannels />
       <NoticeList />
