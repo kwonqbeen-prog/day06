@@ -59,6 +59,8 @@ function Hero() {
         </div>
       ))}
 
+      {/* 전체 헤더 liquid glass — 슬라이드 위에 블러 씌우기 */}
+      <div className="absolute inset-0 backdrop-blur-[7px] bg-black/[0.06]" />
       {/* 오버레이 ① 하단 → 상단 */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
       {/* 오버레이 ② 좌측 → 우측 */}
@@ -67,49 +69,39 @@ function Hero() {
       {/* 히어로 텍스트 — 좌하단 */}
       <div className="absolute inset-0 flex flex-col justify-end">
         <div className="mx-auto w-full max-w-container section-x pb-20 md:pb-24">
-          <div className="relative w-fit max-w-full">
-            {/* Liquid glass 패널 — 텍스트 뒤만 블러 + 우측 페이드 */}
-            <div
-              className="absolute -inset-5 rounded-3xl backdrop-blur-xl bg-black/[0.28]"
-              style={{
-                maskImage: 'linear-gradient(to right, black 50%, transparent 92%)',
-                WebkitMaskImage: 'linear-gradient(to right, black 50%, transparent 92%)',
-              }}
-            />
-            <div className="relative flex flex-col items-start gap-5 md:gap-6">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur-sm">
-                ✏️ {company.tagline}
-              </div>
+          <div className="flex flex-col items-start gap-5 md:gap-6">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur-sm">
+              ✏️ {company.tagline}
+            </div>
 
-              <h1
-                className="text-4xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl"
-                style={{ textShadow: '0 2px 24px rgba(0,0,0,0.9), 0 0 60px rgba(0,0,0,0.6)' }}
+            <h1
+              className="text-4xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl"
+              style={{ textShadow: '0 2px 24px rgba(0,0,0,0.9), 0 0 60px rgba(0,0,0,0.6)' }}
+            >
+              그림으로 <br />
+              <span style={{ color: 'var(--c-primary)' }}>연결되는</span> <br />
+              우리의 이야기
+            </h1>
+
+            <p
+              className="max-w-lg text-sm leading-relaxed text-white/90 md:text-base"
+              style={{ textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}
+            >
+              예비 일러스트레이터와 인스타툰 작가를 위한 드로잉 학습 커뮤니티.
+              <br className="hidden md:block" />
+              현직 작가들의 유튜브 영상을 모아보고, 챌린지로 함께 성장해요.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <Link to="/videos" className="btn-point">
+                추천 영상 보기 →
+              </Link>
+              <Link
+                to="/challenge"
+                className="inline-flex items-center gap-2 rounded-full border border-white/50 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
               >
-                그림으로 <br />
-                <span style={{ color: 'var(--c-primary)' }}>연결되는</span> <br />
-                우리의 이야기
-              </h1>
-
-              <p
-                className="max-w-lg text-sm leading-relaxed text-white/90 md:text-base"
-                style={{ textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}
-              >
-                예비 일러스트레이터와 인스타툰 작가를 위한 드로잉 학습 커뮤니티.
-                <br className="hidden md:block" />
-                현직 작가들의 유튜브 영상을 모아보고, 챌린지로 함께 성장해요.
-              </p>
-
-              <div className="flex flex-wrap gap-3">
-                <Link to="/videos" className="btn-point">
-                  추천 영상 보기 →
-                </Link>
-                <Link
-                  to="/challenge"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/50 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
-                >
-                  챌린지 참여하기
-                </Link>
-              </div>
+                챌린지 참여하기
+              </Link>
             </div>
           </div>
         </div>
