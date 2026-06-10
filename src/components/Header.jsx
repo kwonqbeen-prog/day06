@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { nav, company, PALETTES } from '../data/site'
 import { useTheme } from '../context/ThemeContext'
+import { useAuth } from '../context/AuthContext'
 
 function PaletteIcon() {
   return (
@@ -43,6 +44,13 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [hovered, setHovered] = useState(null)
   const { theme, toggleTheme, palette, setPalette } = useTheme()
+  const { user, profile, signOut } = useAuth()
+  const navigate = useNavigate()
+
+  const handleSignOut = async () => {
+    await signOut()
+    navigate('/')
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full">
@@ -111,6 +119,31 @@ export default function Header() {
             >
               {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
             </button>
+
+            {/* 로그인/로그아웃 (데스크탑) */}
+            <div className="hidden items-center lg:flex">
+              {user ? (
+                <div className="flex items-center gap-2">
+                  <span className="max-w-[80px] truncate text-xs font-semibold text-on-surface">
+                    {profile?.display_name || user.email?.split('@')[0]}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleSignOut}
+                    className="rounded-lg border border-stroke px-3 py-1.5 text-xs font-semibold text-muted transition hover:bg-support"
+                  >
+                    로그아웃
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="rounded-lg bg-point px-4 py-1.5 text-xs font-bold text-white transition hover:opacity-90"
+                >
+                  로그인
+                </Link>
+              )}
+            </div>
 
             {/* 햄버거 (모바일) */}
             <button
@@ -252,6 +285,33 @@ export default function Header() {
                 {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
                 {theme === 'dark' ? '라이트 모드' : '다크 모드'}로 전환
               </button>
+
+              {/* 로그인/로그아웃 (모바일) */}
+              {user ? (
+                <div className="flex flex-col gap-2">
+                  <p className="text-xs text-muted">
+                    <span className="font-bold text-on-surface">
+                      {profile?.display_name || user.email?.split('@')[0]}
+                    </span>
+                    님
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => { handleSignOut(); setMobileOpen(false) }}
+                    className="rounded-xl border border-stroke px-4 py-3 text-sm font-semibold text-muted hover:bg-support"
+                  >
+                    로그아웃
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={() => setMobileOpen(false)}
+                  className="block rounded-xl bg-point px-4 py-3 text-center text-sm font-bold text-white transition hover:opacity-90"
+                >
+                  로그인 / 회원가입
+                </Link>
+              )}
             </div>
           </div>
         </div>

@@ -56,6 +56,7 @@ export const nav = [
     label: '커뮤니티',
     to: '/community',
     children: [
+      { label: '자유 게시판', to: '/board' },
       { label: '공지사항', to: '/community' },
       { label: '작품 갤러리', to: '/community/gallery' },
     ],

@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -11,7 +11,13 @@ import Challenge from './pages/Challenge'
 import Community from './pages/Community'
 import Members from './pages/Members'
 import MemberPost from './pages/MemberPost'
+import Board from './pages/Board'
+import BoardWrite from './pages/BoardWrite'
+import PostDetail from './pages/PostDetail'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
 import SimplePage from './pages/SimplePage'
+import PrivateRoute from './components/PrivateRoute'
 
 export default function App() {
   return (
@@ -31,6 +37,18 @@ export default function App() {
           <Route path="/challenge/results" element={<Challenge tab="results" />} />
           <Route path="/community" element={<Community />} />
           <Route path="/community/gallery" element={<Community tab="gallery" />} />
+          <Route path="/board" element={<Board />} />
+          <Route path="/board/:id" element={<PostDetail />} />
+          <Route
+            path="/board/write"
+            element={
+              <PrivateRoute>
+                <BoardWrite />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/support" element={<SimplePage title="고객센터" />} />
           <Route path="/support/contact" element={<SimplePage title="문의하기" />} />
           <Route path="/terms" element={<SimplePage title="이용약관" />} />
