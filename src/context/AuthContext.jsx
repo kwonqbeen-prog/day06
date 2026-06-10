@@ -51,7 +51,10 @@ export function AuthProvider({ children }) {
     const base = window.location.href.split('#')[0]
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'kakao',
-      options: { redirectTo: base },
+      options: {
+        redirectTo: base,
+        scopes: 'profile_nickname',
+      },
     })
     return { data, error }
   }
